@@ -23,11 +23,11 @@ export const CardMovie = ({ movie }) => {
                         <p className="text-blue-400">{genre}</p>
                     </div>
                 </div>
-                <p className="text-gray-400">{synopsis}</p>
+                <p className="text-gray-100">{synopsis}</p>
                 {cast && cast.length > 0 && (
                     <div className="flex gap-3 flex-wrap">
                         {cast.map((castMember, i) => (
-                            <p className="bg-slate-400 px-2 py-1 text-gray-800 rounded-full text-sm" key={i}>
+                            <p className="bg-slate-300 px-2 py-1 text-gray-800 rounded-full text-sm" key={i}>
                                 {castMember}
                             </p>
                         ))}

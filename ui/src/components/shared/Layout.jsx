@@ -1,4 +1,3 @@
-import React from 'react'
 import { Sidebar } from './Sidebar'
 import { Outlet } from 'react-router-dom'
 
@@ -10,7 +9,7 @@ export const Layout = () => {
                     <Sidebar />
                 </div>
                 <div className='w-full h-full'>
-                    <div className='flex flex-col space-y-5 sm:h-full'>
+                    <div className='flex flex-col space-y-5 sm:h-full overflow-auto'>
                         <Outlet />
                     </div>
                 </div>

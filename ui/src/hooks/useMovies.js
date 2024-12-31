@@ -7,7 +7,6 @@ export const useMovies = () => {
 
     useEffect(() => {
         fetchMovies();
-        console.log(movies)
     }, [])
 
     const fetchMovies = async () => {
@@ -15,12 +14,13 @@ export const useMovies = () => {
             const data = await moviesServices.getAllMovies();
             setMovies(data);
         } catch (err) {
-            setError(err)
+            setError(err.data.error)
         }
     }
 
     return {
+        error,
         movies,
-        error
+        fetchMovies,
     }
 }

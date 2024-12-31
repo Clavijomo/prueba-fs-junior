@@ -5,8 +5,7 @@ const movieSchema = Joi.object({
     year: Joi.number().integer().min(1900).required(),
     genre: Joi.string().required(),
     synopsis: Joi.string().required(),
-    cast: Joi.array().items(Joi.string()).required(),
-    image: Joi.string().uri().required(),
+    cast: Joi.array().items(Joi.string()).required()
 });
 
 module.exports = movieSchema;
