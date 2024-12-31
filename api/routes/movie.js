@@ -15,6 +15,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const { id } = req.params;
+
         if (isNaN(id)) {
             return res.status(400).json({ error: "El ID debe ser un número" });
         }

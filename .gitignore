@@ -1,0 +1,15 @@
+# Dependencias de API
+api/node_modules
+
+# Dependencias de UI
+ui/node_modules
+
+# Logs
+*.log
+
+# Builds
+dist/
+build/
+
+# Archivos temporales
+.DS_Store
