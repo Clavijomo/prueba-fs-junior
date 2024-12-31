@@ -21,10 +21,6 @@ const Movie = sequelize.define('Movie', {
     cast: {
         type: DataTypes.JSON,
         allowNull: false
-    },
-    image: {
-        type: DataTypes.STRING,
-        allowNull: false
     }
 }, {
     tableName: "Movies",
