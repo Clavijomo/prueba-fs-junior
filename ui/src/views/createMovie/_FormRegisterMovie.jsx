@@ -7,6 +7,7 @@ export const FormRegisterMovie = () => {
         years,
         genres,
         errors,
+        loading,
         movieCreate,
         successMessage,
         handleSubmit,
@@ -99,7 +100,10 @@ export const FormRegisterMovie = () => {
                     {movieCreate.cast.length > 0 && (
                         <div className="flex items-center gap-2 flex-wrap my-2">
                             {movieCreate.cast.map((actor, index) => (
-                                <div key={index} className="flex items-center gap-2 bg-slate-200 w-max px-2 py-1 rounded-full text-zinc-500">
+                                <div
+                                    key={index}
+                                    className="flex items-center gap-2 bg-slate-200 w-max px-2 py-1 rounded-full text-zinc-500"
+                                >
                                     <p className="text-sm">{actor}</p>
                                     <button
                                         type="button"
@@ -116,7 +120,15 @@ export const FormRegisterMovie = () => {
                 {errors.cast && (
                     <p className="text-red-500 text-sm">{errors.cast}</p>
                 )}
-                <button className="btn bg-blue-700 p-3 mt-5 rounded-md w-1/3 text-white" type="submit">Crear película</button>
+                <button
+                    disabled={loading}
+                    className="btn bg-blue-700 justify-center flex gap-2 items-center p-3 mt-5 rounded-md w-1/3 text-white" type="submit">
+                    {loading && (
+                        <div className='h-5 w-5 border-2 border-t-2 border-t-white border-blue-300 rounded-full animate-spin' ></div>
+                    )}
+
+                    {!loading ? "Crear" : "Procesando..."}
+                </button>
                 {successMessage && (
                     <div className='bg-green-200 flex items-center justify-center p-3 rounded-md gap-2 mt-3'>
                         <IconCircleCheck size={'20'} className='text-green-800' />
@@ -124,6 +136,6 @@ export const FormRegisterMovie = () => {
                     </div>
                 )}
             </div>
-        </form>
+        </form >
     )
 }

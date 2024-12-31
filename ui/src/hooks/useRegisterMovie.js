@@ -17,6 +17,7 @@ export const useRegisterMovie = () => {
     const [errors, setErrors] = useState({});
     const [actor, setActor] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const { fetchMovies } = useMovies();
 
@@ -86,11 +87,13 @@ export const useRegisterMovie = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             setSuccessMessage('');
+            setLoading(false);
             return
         };
 
@@ -108,8 +111,9 @@ export const useRegisterMovie = () => {
             });
 
             setTimeout(() => {
+                setLoading(false);
                 navigate('/');
-            }, 2000);
+            }, 3000);
         } catch (err) {
             console.error('Error al crear la pelicula:', err.data.error);
             setErrors({ api: "No se pudo crear la pelicula. Intenta luego." });
@@ -126,6 +130,7 @@ export const useRegisterMovie = () => {
         movieCreate,
         successMessage,
         errors,
+        loading,
         handleChange,
         handleChange,
         handleSubmit,
