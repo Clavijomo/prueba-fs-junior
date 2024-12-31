@@ -3,6 +3,9 @@ api/node_modules
 
 # Dependencias de UI
 ui/node_modules
+ui/package-lock.json
+ui/eslint.config.js
+ui/vite.config.js
 
 # Logs
 *.log

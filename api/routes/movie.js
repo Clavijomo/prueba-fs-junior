@@ -34,7 +34,7 @@ router.post('/', async (req, res, next) => {
         await movieService.createMovie(moviePost);
         res.status(201).json({ message: "Pelicula creada exitosamente" });
     } catch (error) {
-        next(err);
+        next(error);
     }
 })
 

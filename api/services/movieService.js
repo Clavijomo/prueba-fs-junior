@@ -1,9 +1,7 @@
 const Movie = require('../models/movie.js');
 
 async function getAllMovies() {
-    const movies = await Movie.findAll({
-        attributes: ['id', 'title', 'year', 'genre', 'image']
-    });
+    const movies = await Movie.findAll();
 
     return movies;
 }
