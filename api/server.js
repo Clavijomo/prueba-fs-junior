@@ -4,10 +4,13 @@ const sequelize = require('./config/db.js');
 const notFoundHandler = require('./middlewares/notFoundHandler.js');
 const errorHandler = require('./middlewares/errorHandler.js');
 const app = express();
+const corsMiddleware = require('./middlewares/cors.js');
 
 app.use(express.json())
 
 const PORT = process.env.PORT ?? 4000;
+
+app.use(corsMiddleware())
 
 app.get('/', (req, res) => {
     res.status(200).send('HOLA MUNDO');
@@ -21,7 +24,6 @@ app.use(notFoundHandler)
 app.use(errorHandler);
 
 // Connection to DB
-
 (async () => {
     try {
         await sequelize.sync({ force: true });

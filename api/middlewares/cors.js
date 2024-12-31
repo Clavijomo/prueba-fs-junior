@@ -1,12 +1,19 @@
-const whiteList = [''];
+const cors = require('cors');
+const whiteList = ['http://localhost:5173'];
 
-const options = {
+const corsMiddleware = ({ acceptedOrigins = whiteList } = {}) => cors({
     origin: (origin, callback) => {
-        if (whiteList.includes(origin) || !origin) {
-            callback(null, true);
-            return;
+
+        if (acceptedOrigins.includes(origin)) {
+            return callback(null, true);
         }
 
-        callback(new Error('No permitido'));
+        if (!origin) {
+            return callback(null, true);
+        }
+
+        return callback(new Error('Not Allowed by CORS'));
     }
-}
+})
+
+module.exports = corsMiddleware;
